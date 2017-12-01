@@ -1,14 +1,25 @@
 #!/usr/bin/python
 import os
 
-rootdir = ''
+# Directory to loop
+rootdir = 'directory'
 
+# Text to be replaced and text that will replace 
 replacements = {'src':'target'}
+
+# List of extensions to ignore ('.pyc', '.bin', etc)
+extToIgnore = []
 
 logData = []
 
 for subdir, dirs, files in os.walk(rootdir):
 	for file in files:
+		exit = False
+		for ext in extToIgnore:
+			if file.endswith(ext):
+				exit = True
+		if exit:
+			break
 		lines = []
 		fullPath = os.path.join(subdir, file)
 		logData.append("Looking in file: %s\n" % file)
