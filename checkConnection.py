@@ -4,7 +4,7 @@ import time
 import platform
 
 osex = platform.system()
-if(osex=="Linux" || osex=="Mac"):
+if(osex=="Linux" OR osex=="Mac"):
 	import os
 	while True:
 		try:
